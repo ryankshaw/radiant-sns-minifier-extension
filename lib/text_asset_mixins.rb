@@ -7,10 +7,11 @@ module TextAssetMixins
   # Built-in JS Minifiers:
   #   * JsminMinifier
   #   * PackrMinifier
+  #   * ClosureCompilerMinifier
   # See each of these models and their related plugins for possible options
   @@settings = { :css_minifier => CssminMinifier,
-                 :css_minify_opts => {:enhanced => true},
-                 :js_minifier => JsminMinifier,
+                 :css_minify_opts => {:enhanced => false},
+                 :js_minifier => ClosureCompilerMinifier,
                  :js_minify_opts => {} }
 
   @@cached_js = {}
