@@ -13,6 +13,7 @@ module TextAssetMixins
                  :js_minifier => JsminMinifier,
                  :js_minify_opts => {} }
 
+  @@cached_js = {}
 
   def self.included(base)
     base.class_eval do
@@ -48,6 +49,6 @@ module TextAssetMixins
     
     
     def minify_js(text)
-      @@settings[:js_minifier].minify(text,@@settings[:js_minify_opts])
+      @@cached_js[text] ||= @@settings[:js_minifier].minify(text,@@settings[:js_minify_opts])
     end
 end
